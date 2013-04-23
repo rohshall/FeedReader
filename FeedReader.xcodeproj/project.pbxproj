@@ -17,13 +17,14 @@
 		505D7FCC17265C370093B25C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 505D7FCB17265C370093B25C /* Default@2x.png */; };
 		505D7FCE17265C370093B25C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 505D7FCD17265C370093B25C /* Default-568h@2x.png */; };
 		505D7FD117265C370093B25C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 505D7FCF17265C370093B25C /* MainStoryboard_iPhone.storyboard */; };
-		505D7FD417265C370093B25C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 505D7FD217265C370093B25C /* MainStoryboard_iPad.storyboard */; };
-		505D7FD717265C370093B25C /* FRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D7FD617265C370093B25C /* FRViewController.m */; };
 		505D7FDF17265C380093B25C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FDE17265C380093B25C /* SenTestingKit.framework */; };
 		505D7FE017265C380093B25C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB717265C370093B25C /* UIKit.framework */; };
 		505D7FE117265C380093B25C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB917265C370093B25C /* Foundation.framework */; };
 		505D7FE917265C380093B25C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 505D7FE717265C380093B25C /* InfoPlist.strings */; };
 		505D7FEC17265C380093B25C /* FeedReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D7FEB17265C380093B25C /* FeedReaderTests.m */; };
+		5065CAE317265E5400AAFC72 /* FRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5065CAE217265E5400AAFC72 /* FRCell.m */; };
+		5065CAE617265E7D00AAFC72 /* FRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5065CAE517265E7D00AAFC72 /* FRViewController.m */; };
+		5065CAEA1726822200AAFC72 /* KMXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5065CAE91726822200AAFC72 /* KMXMLParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,15 +52,18 @@
 		505D7FCB17265C370093B25C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		505D7FCD17265C370093B25C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		505D7FD017265C370093B25C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		505D7FD317265C370093B25C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		505D7FD517265C370093B25C /* FRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRViewController.h; sourceTree = "<group>"; };
-		505D7FD617265C370093B25C /* FRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRViewController.m; sourceTree = "<group>"; };
 		505D7FDD17265C380093B25C /* FeedReaderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedReaderTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		505D7FDE17265C380093B25C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		505D7FE617265C380093B25C /* FeedReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FeedReaderTests-Info.plist"; sourceTree = "<group>"; };
 		505D7FE817265C380093B25C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		505D7FEA17265C380093B25C /* FeedReaderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedReaderTests.h; sourceTree = "<group>"; };
 		505D7FEB17265C380093B25C /* FeedReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedReaderTests.m; sourceTree = "<group>"; };
+		5065CAE117265E5400AAFC72 /* FRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCell.h; sourceTree = "<group>"; };
+		5065CAE217265E5400AAFC72 /* FRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCell.m; sourceTree = "<group>"; };
+		5065CAE417265E7D00AAFC72 /* FRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRViewController.h; sourceTree = "<group>"; };
+		5065CAE517265E7D00AAFC72 /* FRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRViewController.m; sourceTree = "<group>"; };
+		5065CAE81726822200AAFC72 /* KMXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMXMLParser.h; sourceTree = "<group>"; };
+		5065CAE91726822200AAFC72 /* KMXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMXMLParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +123,15 @@
 		505D7FBD17265C370093B25C /* FeedReader */ = {
 			isa = PBXGroup;
 			children = (
+				5065CAE81726822200AAFC72 /* KMXMLParser.h */,
+				5065CAE91726822200AAFC72 /* KMXMLParser.m */,
 				505D7FC617265C370093B25C /* FRAppDelegate.h */,
 				505D7FC717265C370093B25C /* FRAppDelegate.m */,
 				505D7FCF17265C370093B25C /* MainStoryboard_iPhone.storyboard */,
-				505D7FD217265C370093B25C /* MainStoryboard_iPad.storyboard */,
-				505D7FD517265C370093B25C /* FRViewController.h */,
-				505D7FD617265C370093B25C /* FRViewController.m */,
+				5065CAE117265E5400AAFC72 /* FRCell.h */,
+				5065CAE217265E5400AAFC72 /* FRCell.m */,
+				5065CAE417265E7D00AAFC72 /* FRViewController.h */,
+				5065CAE517265E7D00AAFC72 /* FRViewController.m */,
 				505D7FBE17265C370093B25C /* Supporting Files */,
 			);
 			path = FeedReader;
@@ -240,7 +247,6 @@
 				505D7FCC17265C370093B25C /* Default@2x.png in Resources */,
 				505D7FCE17265C370093B25C /* Default-568h@2x.png in Resources */,
 				505D7FD117265C370093B25C /* MainStoryboard_iPhone.storyboard in Resources */,
-				505D7FD417265C370093B25C /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +283,9 @@
 			files = (
 				505D7FC417265C370093B25C /* main.m in Sources */,
 				505D7FC817265C370093B25C /* FRAppDelegate.m in Sources */,
-				505D7FD717265C370093B25C /* FRViewController.m in Sources */,
+				5065CAE317265E5400AAFC72 /* FRCell.m in Sources */,
+				5065CAE617265E7D00AAFC72 /* FRViewController.m in Sources */,
+				5065CAEA1726822200AAFC72 /* KMXMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,14 +322,6 @@
 				505D7FD017265C370093B25C /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		505D7FD217265C370093B25C /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				505D7FD317265C370093B25C /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		505D7FE717265C380093B25C /* InfoPlist.strings */ = {
@@ -400,6 +400,7 @@
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "FeedReader/FeedReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -411,6 +412,7 @@
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "FeedReader/FeedReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -468,6 +470,7 @@
 				505D7FF117265C380093B25C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		505D7FF217265C380093B25C /* Build configuration list for PBXNativeTarget "FeedReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +479,7 @@
 				505D7FF417265C380093B25C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

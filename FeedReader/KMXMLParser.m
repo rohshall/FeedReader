@@ -31,8 +31,14 @@
 #import "KMXMLParser.h"
 
 
-@implementation KMXMLParser
+@implementation KMXMLParser {
+	NSXMLParser *parser;
+    // temporary storage for a post and an element value
+	NSMutableDictionary *post;
+    NSMutableString *elementValue;
+}
 @synthesize delegate;
+
 
 - (id)initWithURL:(NSString *)url delegate:(id)theDelegate;
 {
@@ -45,7 +51,7 @@
 
 -(void)beginParsing:(NSURL *)xmlURL
 {
-	posts = [[NSMutableArray alloc] init];
+	_posts = [[NSMutableArray alloc] init];
 	parser = [[NSXMLParser alloc] initWithContentsOfURL:xmlURL];
 	[parser setDelegate:self];
 	
@@ -53,13 +59,10 @@
 	[parser setShouldReportNamespacePrefixes:NO];
 	[parser setShouldResolveExternalEntities:NO];
 	
+    post = [[NSMutableDictionary alloc] init];
 	[parser parse];
 }
 
--(NSMutableArray *)posts
-{
-	return posts;
-}
 
 #pragma mark NSXMLParser Delegate Methods
 - (void)parserDidStartDocument:(NSXMLParser *)parser
@@ -80,50 +83,39 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
  qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
 {
-	element = [elementName copy];
-	
-	if ([elementName isEqualToString:@"item"]) 
+    // And could be, a start of a new post
+	if ([elementName isEqualToString:@"item"])
 	{
-		elements = [[NSMutableDictionary alloc] init];
-		title = [[NSMutableString alloc] init];
-		date = [[NSMutableString alloc] init];
-		summary = [[NSMutableString alloc] init];
-		link = [[NSMutableString alloc] init];
+		post = [[NSMutableDictionary alloc] init];
 	}
+    else
+    {
+        elementValue = [[NSMutableString alloc] init];
+        // cheat a little here and add value of - thumbnail
+        if ([elementName isEqualToString:@"media:thumbnail"])
+        {
+            NSString *thumbnailUrl = (NSString *)[attributeDict objectForKey:@"url"];
+            [post setObject:thumbnailUrl forKey:@"thumbnail"];
+        }
+    }
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName
 {
 	if ([elementName isEqualToString:@"item"]) 
 	{
-		[elements setObject:title forKey:@"title"];
-		[elements setObject:date forKey:@"date"];
-		[elements setObject:summary forKey:@"summary"];
-		[elements setObject:link forKey:@"link"];
-		
-		[posts addObject:elements ];
+		[_posts addObject:post];
 	}
+    else
+    {
+        [post setObject:[elementValue copy] forKey:[elementName copy]];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-	if ([element isEqualToString:@"title"]) 
-	{
-		[title appendString:string];
-	} 
-	else if ([element isEqualToString:@"pubDate"]) 
-	{
-		[date appendString:string];
-	} 
-	else if ([element isEqualToString:@"description"]) 
-	{
-		[summary appendString:string];
-	} 
-	else if ([element isEqualToString:@"link"]) 
-	{
-		[link appendString:string];
-	} 
+    [elementValue appendString:string];
 }
 
 

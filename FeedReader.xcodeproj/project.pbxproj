@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		504EBFA6173CECE20095A650 /* FRArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504EBFA5173CECE20095A650 /* FRArticleViewController.m */; };
 		505D7FB817265C370093B25C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB717265C370093B25C /* UIKit.framework */; };
 		505D7FBA17265C370093B25C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB917265C370093B25C /* Foundation.framework */; };
 		505D7FBC17265C370093B25C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FBB17265C370093B25C /* CoreGraphics.framework */; };
@@ -23,7 +24,7 @@
 		505D7FE917265C380093B25C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 505D7FE717265C380093B25C /* InfoPlist.strings */; };
 		505D7FEC17265C380093B25C /* FeedReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D7FEB17265C380093B25C /* FeedReaderTests.m */; };
 		5065CAE317265E5400AAFC72 /* FRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5065CAE217265E5400AAFC72 /* FRCell.m */; };
-		5065CAE617265E7D00AAFC72 /* FRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5065CAE517265E7D00AAFC72 /* FRViewController.m */; };
+		5065CAE617265E7D00AAFC72 /* FRListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5065CAE517265E7D00AAFC72 /* FRListingViewController.m */; };
 		5065CAEA1726822200AAFC72 /* KMXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5065CAE91726822200AAFC72 /* KMXMLParser.m */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		504EBFA4173CECE20095A650 /* FRArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRArticleViewController.h; sourceTree = "<group>"; };
+		504EBFA5173CECE20095A650 /* FRArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRArticleViewController.m; sourceTree = "<group>"; };
 		505D7FB417265C370093B25C /* FeedReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		505D7FB717265C370093B25C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		505D7FB917265C370093B25C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,8 +63,8 @@
 		505D7FEB17265C380093B25C /* FeedReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedReaderTests.m; sourceTree = "<group>"; };
 		5065CAE117265E5400AAFC72 /* FRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRCell.h; sourceTree = "<group>"; };
 		5065CAE217265E5400AAFC72 /* FRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCell.m; sourceTree = "<group>"; };
-		5065CAE417265E7D00AAFC72 /* FRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRViewController.h; sourceTree = "<group>"; };
-		5065CAE517265E7D00AAFC72 /* FRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRViewController.m; sourceTree = "<group>"; };
+		5065CAE417265E7D00AAFC72 /* FRListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRListingViewController.h; sourceTree = "<group>"; };
+		5065CAE517265E7D00AAFC72 /* FRListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRListingViewController.m; sourceTree = "<group>"; };
 		5065CAE81726822200AAFC72 /* KMXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMXMLParser.h; sourceTree = "<group>"; };
 		5065CAE91726822200AAFC72 /* KMXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMXMLParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,9 +133,11 @@
 				505D7FCF17265C370093B25C /* MainStoryboard_iPhone.storyboard */,
 				5065CAE117265E5400AAFC72 /* FRCell.h */,
 				5065CAE217265E5400AAFC72 /* FRCell.m */,
-				5065CAE417265E7D00AAFC72 /* FRViewController.h */,
-				5065CAE517265E7D00AAFC72 /* FRViewController.m */,
+				5065CAE417265E7D00AAFC72 /* FRListingViewController.h */,
+				5065CAE517265E7D00AAFC72 /* FRListingViewController.m */,
 				505D7FBE17265C370093B25C /* Supporting Files */,
+				504EBFA4173CECE20095A650 /* FRArticleViewController.h */,
+				504EBFA5173CECE20095A650 /* FRArticleViewController.m */,
 			);
 			path = FeedReader;
 			sourceTree = "<group>";
@@ -284,8 +289,9 @@
 				505D7FC417265C370093B25C /* main.m in Sources */,
 				505D7FC817265C370093B25C /* FRAppDelegate.m in Sources */,
 				5065CAE317265E5400AAFC72 /* FRCell.m in Sources */,
-				5065CAE617265E7D00AAFC72 /* FRViewController.m in Sources */,
+				5065CAE617265E7D00AAFC72 /* FRListingViewController.m in Sources */,
 				5065CAEA1726822200AAFC72 /* KMXMLParser.m in Sources */,
+				504EBFA6173CECE20095A650 /* FRArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FRViewController : UITableViewController
+@interface FRListingViewController : UITableViewController
 @property (nonatomic, strong) NSMutableArray *parseResults;
 @end

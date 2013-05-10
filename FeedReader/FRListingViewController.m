@@ -6,15 +6,16 @@
 //  Copyright (c) 2013 Salil Wadnerkar. All rights reserved.
 //
 
-#import "FRViewController.h"
+#import "FRListingViewController.h"
 #import "FRCell.h"
 #import "KMXMLParser.h"
+#import "FRArticleViewController.h"
 
-@interface FRViewController ()
+@interface FRListingViewController ()
 
 @end
 
-@implementation FRViewController
+@implementation FRListingViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,7 +35,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://rss.cnn.com/rss/cnn_topstories.rss" delegate:nil];
+    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://feeds.bbci.co.uk/news/rss.xml" delegate:nil];
     _parseResults = [parser posts];
 }
 
@@ -65,9 +66,11 @@
     
     // Configure the cell...
     NSDictionary *item = [self.parseResults objectAtIndex:[indexPath row]];
-    cell.url.text = [item objectForKey:@"link"];
     cell.title.text = [item objectForKey:@"title"];
-    cell.description.text = [item objectForKey:@"summary"];
+    cell.description.text = [item objectForKey:@"description"];
+    NSString *url = [item objectForKey:@"thumbnail"];
+    NSLog(@"Downloading image from URL %@", url);
+    cell.thumbnail.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
     
     return cell;
 }
@@ -110,6 +113,18 @@
     return YES;
 }
 */
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"Article"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *item = [self.parseResults objectAtIndex:[indexPath row]];
+        NSString *url = [item objectForKey:@"link"];
+        FRArticleViewController *articleViewController = (FRArticleViewController*)segue.destinationViewController;
+        articleViewController.url = url;
+    }
+}
 
 #pragma mark - Table view delegate
 

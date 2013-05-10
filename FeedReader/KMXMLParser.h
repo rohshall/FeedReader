@@ -31,24 +31,12 @@
 @protocol KMXMLParserDelegate;
 
 @interface KMXMLParser : NSObject <NSXMLParserDelegate>{
-
-	NSXMLParser *parser;
-	NSMutableArray *posts;
-	NSMutableDictionary *elements;
-	NSString *element;
-	NSMutableString *title;
-	NSMutableString *date;
-	NSMutableString *summary;
-	NSMutableString *link;
-    
-    __weak id <KMXMLParserDelegate> delegate;
 }
 
 @property (weak, nonatomic) id <KMXMLParserDelegate> delegate;
+@property (strong, nonatomic, readonly) NSMutableArray *posts;
 
 - (id)initWithURL:(NSString *)url delegate:(id)delegate;
-- (void)beginParsing:(NSURL *)xmlURL;
-- (NSMutableArray *)posts;
 @end
 
 @protocol KMXMLParserDelegate <NSObject>

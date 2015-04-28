@@ -9,6 +9,7 @@
 #import "FRCell.h"
 
 @implementation FRCell
+@synthesize title, description;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

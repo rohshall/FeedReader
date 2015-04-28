@@ -10,12 +10,17 @@
 #import "FRCell.h"
 #import "KMXMLParser.h"
 #import "FRArticleViewController.h"
+#import "FeedManager.h"
+#import "DataManager.h"
+#import "Feed.h"
 
 @interface FRListingViewController ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 @end
 
 @implementation FRListingViewController
+@synthesize loadingView = _loadingView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,8 +40,46 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://feeds.bbci.co.uk/news/rss.xml" delegate:nil];
-    _parseResults = [parser posts];
+
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData:)
+                                                 name:@"updateUI"
+                                               object:nil];
+    if ([[DataManager sharedInstance] deleteAllFeeds]) {
+        [self addLoadingView];
+        [[FeedManager sharedInstance] getAllFeeds];
+    }
+}
+
+-(void)addLoadingView
+{
+    if (_loadingView == nil) {
+        _loadingView = [[UIAlertView alloc] initWithTitle:@"Please wait..."
+                                                  message:@"Please wait untill we are getting lastest updates for you"
+                                                 delegate:self
+                                        cancelButtonTitle:nil
+                                        otherButtonTitles:nil];
+        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+        // Adjust the indicator so it is up a few pixels from the bottom of the alert
+        /*indicator.center = CGPointMake(_loadingView.bounds.size.width / 2,
+                                       _loadingView.bounds.size.height - 70);*/
+        
+        indicator.frame=CGRectMake(_loadingView.frame.size.width/2 - indicator.frame.size.width,
+                                   _loadingView.frame.size.height - indicator.frame.size.height*2,
+                                   indicator.frame.size.width,
+                                   indicator.frame.size.height);
+        [indicator startAnimating];
+        [_loadingView addSubview:indicator];
+    }
+  
+    [_loadingView show];
+}
+
+-(void)removeLoadingView
+{
+    [_loadingView dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +88,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) refreshData:(NSNotification *) notification
+{
+    NSLog(@"Update UI");
+    [self removeLoadingView];
+    _parseResults = [[DataManager sharedInstance] readAllFeeds];
+    [self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -65,13 +115,23 @@
     FRCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *item = [self.parseResults objectAtIndex:[indexPath row]];
-    cell.title.text = [item objectForKey:@"title"];
-    cell.description.text = [item objectForKey:@"description"];
-    NSString *url = [item objectForKey:@"thumbnail"];
-    NSLog(@"Downloading image from URL %@", url);
-    cell.thumbnail.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+    Feed *item = [self.parseResults objectAtIndex:[indexPath row]];
     
+    cell.title.text = item.title; //[item objectForKey:@"title"];
+    [cell.title sizeToFit];
+    
+    cell.description.text =  [NSString stringWithFormat:@"%@: %@",
+                              [NSDateFormatter localizedStringFromDate:item.pubDate
+                                                             dateStyle:NSDateFormatterShortStyle
+                                                             timeStyle:NSDateFormatterShortStyle],
+                              item.feed_description];
+//    NSString *url = item.thumbnail; //[item objectForKey:@"thumbnail"];
+//    
+//    if (url != NULL) {
+//        NSLog(@"Downloading image from URL %@", url);
+//        cell.thumbnail.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+//    }
+
     return cell;
 }
 
@@ -119,8 +179,8 @@
     if([[segue identifier] isEqualToString:@"Article"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *item = [self.parseResults objectAtIndex:[indexPath row]];
-        NSString *url = [item objectForKey:@"link"];
+        Feed *item = [self.parseResults objectAtIndex:[indexPath row]];
+        NSString *url =  item.link;//[item objectForKey:@"link"];
         FRArticleViewController *articleViewController = (FRArticleViewController*)segue.destinationViewController;
         articleViewController.url = url;
     }

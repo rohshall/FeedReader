@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A99C1E11AEA1F5F00EB576D /* FeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1E01AEA1F5F00EB576D /* FeedManager.m */; };
+		2A99C1E41AEA27B800EB576D /* FeedDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1E31AEA27B800EB576D /* FeedDownloader.m */; };
+		2A99C1E71AEA3D7300EB576D /* FeedRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1E61AEA3D7300EB576D /* FeedRecord.m */; };
+		2A99C1EE1AEA479300EB576D /* FeedModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1EC1AEA479300EB576D /* FeedModel.xcdatamodeld */; };
+		2A99C1F71AEE007C00EB576D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1F61AEE007C00EB576D /* DataManager.m */; };
+		2A99C1FD1AEE326C00EB576D /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1FC1AEE326C00EB576D /* Feed.m */; };
 		504EBFA6173CECE20095A650 /* FRArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504EBFA5173CECE20095A650 /* FRArticleViewController.m */; };
 		505D7FB817265C370093B25C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB717265C370093B25C /* UIKit.framework */; };
 		505D7FBA17265C370093B25C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB917265C370093B25C /* Foundation.framework */; };
@@ -39,6 +45,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A99C1DF1AEA1F5F00EB576D /* FeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedManager.h; path = FeedReader/XmlFeed/FeedManager.h; sourceTree = "<group>"; };
+		2A99C1E01AEA1F5F00EB576D /* FeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedManager.m; path = FeedReader/XmlFeed/FeedManager.m; sourceTree = "<group>"; };
+		2A99C1E21AEA27B800EB576D /* FeedDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedDownloader.h; path = FeedReader/XmlFeed/FeedDownloader.h; sourceTree = "<group>"; };
+		2A99C1E31AEA27B800EB576D /* FeedDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedDownloader.m; path = FeedReader/XmlFeed/FeedDownloader.m; sourceTree = "<group>"; };
+		2A99C1E51AEA3D7300EB576D /* FeedRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedRecord.h; path = FeedReader/XmlFeed/FeedRecord.h; sourceTree = "<group>"; };
+		2A99C1E61AEA3D7300EB576D /* FeedRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedRecord.m; path = FeedReader/XmlFeed/FeedRecord.m; sourceTree = "<group>"; };
+		2A99C1ED1AEA479300EB576D /* FeedModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedModel.xcdatamodel; sourceTree = "<group>"; };
+		2A99C1F51AEE007C00EB576D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = FeedReader/Model/DataManager.h; sourceTree = "<group>"; };
+		2A99C1F61AEE007C00EB576D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = FeedReader/Model/DataManager.m; sourceTree = "<group>"; };
+		2A99C1FB1AEE326C00EB576D /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Feed.h; path = FeedReader/Model/Feed.h; sourceTree = "<group>"; };
+		2A99C1FC1AEE326C00EB576D /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feed.m; path = FeedReader/Model/Feed.m; sourceTree = "<group>"; };
 		504EBFA4173CECE20095A650 /* FRArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRArticleViewController.h; sourceTree = "<group>"; };
 		504EBFA5173CECE20095A650 /* FRArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRArticleViewController.m; sourceTree = "<group>"; };
 		505D7FB417265C370093B25C /* FeedReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,8 +82,8 @@
 		5065CAE217265E5400AAFC72 /* FRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRCell.m; sourceTree = "<group>"; };
 		5065CAE417265E7D00AAFC72 /* FRListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRListingViewController.h; sourceTree = "<group>"; };
 		5065CAE517265E7D00AAFC72 /* FRListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRListingViewController.m; sourceTree = "<group>"; };
-		5065CAE81726822200AAFC72 /* KMXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMXMLParser.h; sourceTree = "<group>"; };
-		5065CAE91726822200AAFC72 /* KMXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMXMLParser.m; sourceTree = "<group>"; };
+		5065CAE81726822200AAFC72 /* KMXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMXMLParser.h; path = FeedReader/KMXMLParser.h; sourceTree = "<group>"; };
+		5065CAE91726822200AAFC72 /* KMXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMXMLParser.m; path = FeedReader/KMXMLParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,9 +110,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A99C1E81AEA46B700EB576D /* FeedSource */ = {
+			isa = PBXGroup;
+			children = (
+				5065CAE81726822200AAFC72 /* KMXMLParser.h */,
+				5065CAE91726822200AAFC72 /* KMXMLParser.m */,
+				2A99C1DF1AEA1F5F00EB576D /* FeedManager.h */,
+				2A99C1E01AEA1F5F00EB576D /* FeedManager.m */,
+				2A99C1E51AEA3D7300EB576D /* FeedRecord.h */,
+				2A99C1E61AEA3D7300EB576D /* FeedRecord.m */,
+				2A99C1E21AEA27B800EB576D /* FeedDownloader.h */,
+				2A99C1E31AEA27B800EB576D /* FeedDownloader.m */,
+			);
+			name = FeedSource;
+			sourceTree = "<group>";
+		};
+		2A99C1EF1AEA479800EB576D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A99C1EC1AEA479300EB576D /* FeedModel.xcdatamodeld */,
+				2A99C1FB1AEE326C00EB576D /* Feed.h */,
+				2A99C1FC1AEE326C00EB576D /* Feed.m */,
+				2A99C1F51AEE007C00EB576D /* DataManager.h */,
+				2A99C1F61AEE007C00EB576D /* DataManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		505D7FAB17265C370093B25C = {
 			isa = PBXGroup;
 			children = (
+				2A99C1EF1AEA479800EB576D /* Model */,
+				2A99C1E81AEA46B700EB576D /* FeedSource */,
 				505D7FBD17265C370093B25C /* FeedReader */,
 				505D7FE417265C380093B25C /* FeedReaderTests */,
 				505D7FB617265C370093B25C /* Frameworks */,
@@ -126,8 +172,6 @@
 		505D7FBD17265C370093B25C /* FeedReader */ = {
 			isa = PBXGroup;
 			children = (
-				5065CAE81726822200AAFC72 /* KMXMLParser.h */,
-				5065CAE91726822200AAFC72 /* KMXMLParser.m */,
 				505D7FC617265C370093B25C /* FRAppDelegate.h */,
 				505D7FC717265C370093B25C /* FRAppDelegate.m */,
 				505D7FCF17265C370093B25C /* MainStoryboard_iPhone.storyboard */,
@@ -135,9 +179,9 @@
 				5065CAE217265E5400AAFC72 /* FRCell.m */,
 				5065CAE417265E7D00AAFC72 /* FRListingViewController.h */,
 				5065CAE517265E7D00AAFC72 /* FRListingViewController.m */,
-				505D7FBE17265C370093B25C /* Supporting Files */,
 				504EBFA4173CECE20095A650 /* FRArticleViewController.h */,
 				504EBFA5173CECE20095A650 /* FRArticleViewController.m */,
+				505D7FBE17265C370093B25C /* Supporting Files */,
 			);
 			path = FeedReader;
 			sourceTree = "<group>";
@@ -212,7 +256,7 @@
 			name = FeedReaderTests;
 			productName = FeedReaderTests;
 			productReference = 505D7FDD17265C380093B25C /* FeedReaderTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -223,6 +267,11 @@
 				CLASSPREFIX = FR;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Salil Wadnerkar";
+				TargetAttributes = {
+					505D7FB317265C370093B25C = {
+						DevelopmentTeam = J2333Y4VUX;
+					};
+				};
 			};
 			buildConfigurationList = 505D7FAF17265C370093B25C /* Build configuration list for PBXProject "FeedReader" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -287,10 +336,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				505D7FC417265C370093B25C /* main.m in Sources */,
+				2A99C1F71AEE007C00EB576D /* DataManager.m in Sources */,
+				2A99C1EE1AEA479300EB576D /* FeedModel.xcdatamodeld in Sources */,
+				2A99C1E11AEA1F5F00EB576D /* FeedManager.m in Sources */,
 				505D7FC817265C370093B25C /* FRAppDelegate.m in Sources */,
+				2A99C1E71AEA3D7300EB576D /* FeedRecord.m in Sources */,
 				5065CAE317265E5400AAFC72 /* FRCell.m in Sources */,
 				5065CAE617265E7D00AAFC72 /* FRListingViewController.m in Sources */,
 				5065CAEA1726822200AAFC72 /* KMXMLParser.m in Sources */,
+				2A99C1FD1AEE326C00EB576D /* Feed.m in Sources */,
+				2A99C1E41AEA27B800EB576D /* FeedDownloader.m in Sources */,
 				504EBFA6173CECE20095A650 /* FRArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,10 +457,16 @@
 		505D7FF017265C380093B25C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "FeedReader/FeedReader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a9b2b1e9-ebeb-4504-8f1a-a28f440a47ac";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -414,10 +475,15 @@
 		505D7FF117265C380093B25C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "FeedReader/FeedReader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a9b2b1e9-ebeb-4504-8f1a-a28f440a47ac";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -488,6 +554,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A99C1EC1AEA479300EB576D /* FeedModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A99C1ED1AEA479300EB576D /* FeedModel.xcdatamodel */,
+			);
+			currentVersion = 2A99C1ED1AEA479300EB576D /* FeedModel.xcdatamodel */;
+			name = FeedModel.xcdatamodeld;
+			path = FeedReader/Model/FeedModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 505D7FAC17265C370093B25C /* Project object */;
 }

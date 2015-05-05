@@ -13,6 +13,7 @@
 		2A99C1EE1AEA479300EB576D /* FeedModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1EC1AEA479300EB576D /* FeedModel.xcdatamodeld */; };
 		2A99C1F71AEE007C00EB576D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1F61AEE007C00EB576D /* DataManager.m */; };
 		2A99C1FD1AEE326C00EB576D /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1FC1AEE326C00EB576D /* Feed.m */; };
+		2A99C2001AEFAECC00EB576D /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A99C1FF1AEFAECC00EB576D /* CustomIOSAlertView.m */; };
 		504EBFA6173CECE20095A650 /* FRArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504EBFA5173CECE20095A650 /* FRArticleViewController.m */; };
 		505D7FB817265C370093B25C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB717265C370093B25C /* UIKit.framework */; };
 		505D7FBA17265C370093B25C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505D7FB917265C370093B25C /* Foundation.framework */; };
@@ -56,6 +57,8 @@
 		2A99C1F61AEE007C00EB576D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = FeedReader/Model/DataManager.m; sourceTree = "<group>"; };
 		2A99C1FB1AEE326C00EB576D /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Feed.h; path = FeedReader/Model/Feed.h; sourceTree = "<group>"; };
 		2A99C1FC1AEE326C00EB576D /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feed.m; path = FeedReader/Model/Feed.m; sourceTree = "<group>"; };
+		2A99C1FE1AEFAECC00EB576D /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomIOSAlertView.h; path = FeedReader/external/CustomIOSAlertView.h; sourceTree = "<group>"; };
+		2A99C1FF1AEFAECC00EB576D /* CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomIOSAlertView.m; path = FeedReader/external/CustomIOSAlertView.m; sourceTree = "<group>"; };
 		504EBFA4173CECE20095A650 /* FRArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRArticleViewController.h; sourceTree = "<group>"; };
 		504EBFA5173CECE20095A650 /* FRArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRArticleViewController.m; sourceTree = "<group>"; };
 		505D7FB417265C370093B25C /* FeedReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,9 +140,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		2A99C2011AEFAED000EB576D /* External */ = {
+			isa = PBXGroup;
+			children = (
+				2A99C1FE1AEFAECC00EB576D /* CustomIOSAlertView.h */,
+				2A99C1FF1AEFAECC00EB576D /* CustomIOSAlertView.m */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
 		505D7FAB17265C370093B25C = {
 			isa = PBXGroup;
 			children = (
+				2A99C2011AEFAED000EB576D /* External */,
 				2A99C1EF1AEA479800EB576D /* Model */,
 				2A99C1E81AEA46B700EB576D /* FeedSource */,
 				505D7FBD17265C370093B25C /* FeedReader */,
@@ -344,6 +357,7 @@
 				5065CAE317265E5400AAFC72 /* FRCell.m in Sources */,
 				5065CAE617265E7D00AAFC72 /* FRListingViewController.m in Sources */,
 				5065CAEA1726822200AAFC72 /* KMXMLParser.m in Sources */,
+				2A99C2001AEFAECC00EB576D /* CustomIOSAlertView.m in Sources */,
 				2A99C1FD1AEE326C00EB576D /* Feed.m in Sources */,
 				2A99C1E41AEA27B800EB576D /* FeedDownloader.m in Sources */,
 				504EBFA6173CECE20095A650 /* FRArticleViewController.m in Sources */,
@@ -465,7 +479,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9b2b1e9-ebeb-4504-8f1a-a28f440a47ac";
+				PROVISIONING_PROFILE = "64673b0a-2361-41aa-a23c-6b38c7952a25";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -483,7 +497,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9b2b1e9-ebeb-4504-8f1a-a28f440a47ac";
+				PROVISIONING_PROFILE = "64673b0a-2361-41aa-a23c-6b38c7952a25";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

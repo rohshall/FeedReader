@@ -31,7 +31,7 @@ static DataManager *sharedInstance = nil;
     return sharedInstance;
 }
 
--(BOOL)insertFeeds:(NSMutableArray *)feeds {
+-(BOOL)insertFeeds:(NSMutableArray *)feeds forGroupId:(NSString *)guid {
     BOOL status = true;
     FRAppDelegate *appDelegate = (FRAppDelegate *)[UIApplication sharedApplication].delegate;
     
@@ -49,7 +49,7 @@ static DataManager *sharedInstance = nil;
         feed.feed_description = [dictionary objectForKey:@"description"];
         feed.link = [dictionary objectForKey:@"link"];
         feed.thumbnail = [dictionary objectForKey:@"thumbnail"];
-        feed.guid = [dictionary objectForKey:@"guid"];
+        feed.guid = guid;
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss zzz"];
@@ -93,6 +93,37 @@ static DataManager *sharedInstance = nil;
     return feeds;
 }
 
+-(NSMutableArray *)readFeedsWithGuid:(NSString *)guid {
+    
+    FRAppDelegate *appDelegate = (FRAppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Feed"
+                                              inManagedObjectContext:appDelegate.managedObjectContext];
+    
+    
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"guid = %@", guid];
+    fetchRequest.predicate = predicate;
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"pubDate" ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSError *error = nil;
+    NSMutableArray *feeds = (NSMutableArray *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (error) {
+        NSLog(@"Unable to execute fetch request.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+        
+    }
+    return feeds;
+}
+
 -(BOOL)deleteAllFeeds {
     BOOL sts = true;
     NSError *error = nil;
@@ -101,6 +132,25 @@ static DataManager *sharedInstance = nil;
     for (Feed *feed in feeds) {
         [appDelegate.managedObjectContext deleteObject:feed];
     }
+    [appDelegate.managedObjectContext save:&error];
+    if (error != nil) {
+        sts = false;
+        NSLog(@"Unable to delete managed object context:: %@", [error localizedDescription]);
+    }
+    return sts;
+}
+
+-(BOOL)deleteFeedsWithGuid:(NSString *)guid
+{
+    BOOL sts = true;
+    NSError *error = nil;
+    FRAppDelegate *appDelegate = (FRAppDelegate *)[UIApplication sharedApplication].delegate;
+    NSMutableArray *feeds = [self readFeedsWithGuid:guid];
+    
+    for (Feed *feed in feeds) {
+        [appDelegate.managedObjectContext deleteObject:feed];
+    }
+    
     [appDelegate.managedObjectContext save:&error];
     if (error != nil) {
         sts = false;

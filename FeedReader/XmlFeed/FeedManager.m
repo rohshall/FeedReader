@@ -75,7 +75,14 @@ static FeedManager *sharedInstance = nil;
     NSLog(@"Feed count: %d", [feedRecord.feeds count]);
     [_downloadsInProgress removeObjectForKey:feedRecord.url];
     
-    BOOL sts = [[DataManager sharedInstance] insertFeeds:feedRecord.feeds];
+    if ([feedRecord.feeds count] > 0) {
+        BOOL isdeleted = [[DataManager sharedInstance] deleteFeedsWithGuid:feedRecord.url];
+        if (isdeleted) {
+            NSLog(@"Deleted existing feeds");
+        }
+    }
+    
+    BOOL sts = [[DataManager sharedInstance] insertFeeds:feedRecord.feeds forGroupId:feedRecord.url];
     if (!sts) {
         NSLog(@"Error");
     }

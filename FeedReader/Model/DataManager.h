@@ -12,7 +12,11 @@
 
 +(id)sharedInstance;
 
--(BOOL)insertFeeds:(NSMutableArray *)feeds;
+-(BOOL)insertFeeds:(NSMutableArray *)feeds forGroupId:(NSString *)guid;
+
 -(NSMutableArray *)readAllFeeds;
+-(NSMutableArray *)readFeedsWithGuid:(NSString *)guid;
+
 -(BOOL)deleteAllFeeds;
+-(BOOL)deleteFeedsWithGuid:(NSString *)guid;
 @end

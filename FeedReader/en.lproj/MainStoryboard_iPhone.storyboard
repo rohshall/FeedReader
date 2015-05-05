@@ -53,7 +53,13 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feeds" id="78u-PG-mrT" userLabel="Navigation Item - Listing"/>
+                    <navigationItem key="navigationItem" title="Feeds" id="78u-PG-mrT" userLabel="Navigation Item - Listing">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="tdx-bL-WVb">
+                            <connections>
+                                <action selector="refreshClicked:" destination="sQi-JK-WHU" id="AAz-r7-f9v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpF-Tv-ibf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -77,10 +83,19 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="588" id="5z5-lq-ycJ"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="4UD-sz-aV1" id="Zh2-Oj-Mdg"/>
+                                </connections>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="J4K-Zz-7Re">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="J4K-Zz-7Re" secondAttribute="centerY" id="AyO-zB-e89"/>
+                            <constraint firstAttribute="centerX" secondItem="J4K-Zz-7Re" secondAttribute="centerX" id="E4F-zT-QPi"/>
                             <constraint firstItem="3Zx-Dp-G7d" firstAttribute="top" secondItem="mHO-xZ-TQ0" secondAttribute="top" id="RVA-Vq-XY5"/>
                             <constraint firstItem="3Zx-Dp-G7d" firstAttribute="trailing" secondItem="mHO-xZ-TQ0" secondAttribute="trailing" id="WEL-bp-e4C"/>
                             <constraint firstItem="3Zx-Dp-G7d" firstAttribute="leading" secondItem="mHO-xZ-TQ0" secondAttribute="leading" id="Yor-sH-GXG"/>
@@ -88,6 +103,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="T9g-8d-elW"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="J4K-Zz-7Re" id="Qwb-kh-Iww"/>
                         <outlet property="webView" destination="3Zx-Dp-G7d" id="D9Q-g8-P4r"/>
                     </connections>
                 </viewController>

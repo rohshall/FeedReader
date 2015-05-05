@@ -10,6 +10,8 @@
 
 @interface FRListingViewController : UITableViewController
 
-@property (nonatomic, strong) UIAlertView *loadingView;
+//@property (nonatomic, strong) UIAlertView *loadingView;
 @property (nonatomic, strong) NSMutableArray *parseResults;
+- (IBAction)refreshClicked:(id)sender;
+
 @end

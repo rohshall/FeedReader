@@ -9,6 +9,7 @@
 #import "FRArticleViewController.h"
 
 @interface FRArticleViewController ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 @end
 
@@ -27,6 +28,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [_loadingIndicator startAnimating];
+    
     NSURL *url = [NSURL URLWithString:_url];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:req];
@@ -36,6 +39,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [_loadingIndicator stopAnimating];
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"webView::didFailLoadWithError %@", [error localizedDescription]);
+    [_loadingIndicator stopAnimating];    
 }
 
 @end

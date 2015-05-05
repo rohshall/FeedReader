@@ -51,8 +51,18 @@
 
 -(void)beginParsing:(NSURL *)xmlURL
 {
+    NSError *error;
+    NSURLResponse *response;
+    NSData *data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:xmlURL]
+                                         returningResponse:&response
+                                                     error:&error];
+    
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
 	_posts = [[NSMutableArray alloc] init];
-	parser = [[NSXMLParser alloc] initWithContentsOfURL:xmlURL];
+	//parser = [[NSXMLParser alloc] initWithContentsOfURL:xmlURL];
+    parser = [[NSXMLParser alloc] initWithData:data];
 	[parser setDelegate:self];
 	
 	[parser setShouldProcessNamespaces:NO];
@@ -60,7 +70,8 @@
 	[parser setShouldResolveExternalEntities:NO];
 	
     post = [[NSMutableDictionary alloc] init];
-	[parser parse];
+	BOOL status = [parser parse];
+    NSLog(@"%d", status);
 }
 
 

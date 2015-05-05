@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FRArticleViewController : UIViewController
+@interface FRArticleViewController : UIViewController <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) NSString *url;
 @end

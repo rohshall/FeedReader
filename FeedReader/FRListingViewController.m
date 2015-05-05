@@ -10,18 +10,27 @@
 #import "FRCell.h"
 #import "KMXMLParser.h"
 #import "FRArticleViewController.h"
+#import "FeedManager.h"
+#import "DataManager.h"
+#import "Feed.h"
+#import "CustomIOSAlertView.h"
 
 @interface FRListingViewController ()
-
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (nonatomic, strong) CustomIOSAlertView *alertView;
 @end
 
 @implementation FRListingViewController
+//@synthesize loadingView = _loadingView;
+@synthesize alertView = _alertView;
+@synthesize parseResults = _parseResults;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -35,8 +44,79 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    KMXMLParser *parser = [[KMXMLParser alloc] initWithURL:@"http://feeds.bbci.co.uk/news/rss.xml" delegate:nil];
-    _parseResults = [parser posts];
+
+    [self createLoadingView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData:)
+                                                 name:@"updateUI"
+                                               object:nil];
+    //if ([[DataManager sharedInstance] deleteAllFeeds]) {
+        [self showLoadingView];
+        [[FeedManager sharedInstance] getAllFeeds];
+    //}
+    
+}
+
+-(void)createLoadingView
+{
+    _alertView = [[CustomIOSAlertView alloc] init];
+    
+    UIView *dialog = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 130)];
+    
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 10.f, dialog.frame.size.width, 24.f)];
+    title.textAlignment = NSTextAlignmentCenter;
+    title.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
+    title.text = @"Please wait";
+    
+    [dialog addSubview:title];
+    
+    UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(15, 32.f, dialog.frame.size.width - 30, 44.f)];
+    message.textAlignment = NSTextAlignmentCenter;
+    message.numberOfLines = 0;
+    message.font = [UIFont fontWithName:@"Helvetica" size:14.f];
+    message.text = @"We are downloading the latest news for you...";
+    
+    [dialog addSubview:message];
+    
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    indicator.frame=CGRectMake(dialog.frame.size.width/2 - indicator.frame.size.width/2,
+                               dialog.frame.size.height - indicator.frame.size.height*2,
+                               indicator.frame.size.width,
+                               indicator.frame.size.height);
+    
+    [indicator startAnimating];
+    
+    [dialog addSubview:indicator];
+    
+    
+    // Add some custom content to the alert view
+    [_alertView setContainerView:dialog];
+    
+    
+    [_alertView setButtonTitles:[NSMutableArray arrayWithObjects: nil]];
+    //[alertView setDelegate:self];
+    
+    // You may use a Block, rather than a delegate.
+    [_alertView setOnButtonTouchUpInside:^(CustomIOSAlertView *alertView, int buttonIndex) {
+        NSLog(@"Block: Button at position %d is clicked on alertView %d.", buttonIndex, (int)[alertView tag]);
+        [alertView close];
+    }];
+    
+    [_alertView setUseMotionEffects:true];
+    
+    //[_alertView show];
+}
+
+-(void)showLoadingView
+{
+    [_alertView show];
+}
+
+-(void)removeLoadingView
+{
+    [_alertView close];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +125,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) refreshData:(NSNotification *) notification
+{
+    NSLog(@"Update UI");
+    [self removeLoadingView];
+    //[_parseResults removeAllObjects];
+    _parseResults = [[DataManager sharedInstance] readAllFeeds];
+    [self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -65,13 +153,23 @@
     FRCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *item = [self.parseResults objectAtIndex:[indexPath row]];
-    cell.title.text = [item objectForKey:@"title"];
-    cell.description.text = [item objectForKey:@"description"];
-    NSString *url = [item objectForKey:@"thumbnail"];
-    NSLog(@"Downloading image from URL %@", url);
-    cell.thumbnail.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+    Feed *item = [_parseResults objectAtIndex:[indexPath row]];
     
+    cell.title.text = item.title; //[item objectForKey:@"title"];
+    [cell.title sizeToFit];
+    
+    cell.description.text =  [NSString stringWithFormat:@"%@: %@",
+                              [NSDateFormatter localizedStringFromDate:item.pubDate
+                                                             dateStyle:NSDateFormatterShortStyle
+                                                             timeStyle:NSDateFormatterShortStyle],
+                              item.feed_description];
+//    NSString *url = item.thumbnail; //[item objectForKey:@"thumbnail"];
+//    
+//    if (url != NULL) {
+//        NSLog(@"Downloading image from URL %@", url);
+//        cell.thumbnail.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+//    }
+
     return cell;
 }
 
@@ -119,8 +217,8 @@
     if([[segue identifier] isEqualToString:@"Article"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *item = [self.parseResults objectAtIndex:[indexPath row]];
-        NSString *url = [item objectForKey:@"link"];
+        Feed *item = [_parseResults objectAtIndex:[indexPath row]];
+        NSString *url =  item.link;//[item objectForKey:@"link"];
         FRArticleViewController *articleViewController = (FRArticleViewController*)segue.destinationViewController;
         articleViewController.url = url;
     }
@@ -139,4 +237,8 @@
      */
 }
 
+- (IBAction)refreshClicked:(id)sender {
+    [self showLoadingView];
+    [[FeedManager sharedInstance] getAllFeeds];
+}
 @end

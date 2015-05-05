@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FRCell : UITableViewCell
-@property (nonatomic, strong) IBOutlet UILabel *title;
-@property (nonatomic, strong) IBOutlet UILabel *description;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *description;
+
 @end

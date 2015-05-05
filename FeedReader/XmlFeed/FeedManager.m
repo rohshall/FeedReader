@@ -41,14 +41,17 @@ static FeedManager *sharedInstance = nil;
 }
 
 -(void)getAllFeeds {
-    NSArray *urlArray = [NSArray arrayWithObjects:@"http://topics.nytimes.com/top/reference/timestopics/subjects/s/sikhs_sect/index.html?rss=1", @"http://feeds.feedburner.com/sikhnetnews", @"http://sikhsiyasat.net/feed/", nil];
-    int index = 0;
-    for (int i = 0; i < 50; i++) {
-        if (index > 2) {
-            index = 1;
-        }
-        [self getFeedForUrl:[urlArray objectAtIndex:index]];
-        index++;
+    NSArray *urlArray = [NSArray arrayWithObjects:@"http://feeds.bbci.co.uk/news/rss.xml", nil];
+
+    //Some more Test feed URL
+    /*
+    http://topics.nytimes.com/top/reference/timestopics/subjects/s/sikhs_sect/index.html?rss=1
+    http://feeds.feedburner.com/sikhnetnews
+    http://sikhsiyasat.net/feed/
+    */
+    
+    for (NSString *urlString in urlArray) {
+        [self getFeedForUrl:urlString];
     }
 }
 
@@ -72,7 +75,7 @@ static FeedManager *sharedInstance = nil;
 
 
 - (void)feedDownloaderDidFinish:(FeedRecord *)feedRecord {
-    NSLog(@"Feed count: %d", [feedRecord.feeds count]);
+    NSLog(@"Feed count: %lu", (unsigned long)[feedRecord.feeds count]);
     [_downloadsInProgress removeObjectForKey:feedRecord.url];
     
     if ([feedRecord.feeds count] > 0) {
